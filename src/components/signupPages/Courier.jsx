@@ -40,7 +40,7 @@ const Courier = () => {
 
     console.log(values);
 
-    axios.post("http://localhost:3000/signup/courier", values)
+    axios.post("https://foodserver-0mx8.onrender.com/signup/courier", values)
       .then((response) => {
         if (response.status === 201) {
           console.log(response.data);

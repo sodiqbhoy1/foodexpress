@@ -21,7 +21,7 @@ const Customer = () => {
       console.log('Form submitted:', values);
 
       try {
-        const response = await axios.post('http://localhost:3000/signin/customer', values);
+        const response = await axios.post('https://foodserver-0mx8.onrender.com/signin/customer', values);
 
         if (response.status === 200) {
           console.log('Successful login:', response.data);

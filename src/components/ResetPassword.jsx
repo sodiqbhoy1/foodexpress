@@ -21,7 +21,7 @@ const ResetPassword = () => {
     setLoading(true);
 
     try {
-      const res = await fetch(`https://your-api.com/api/reset-password`, {
+      const res = await fetch(`https://foodserver-0mx8.onrender.com/reset-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

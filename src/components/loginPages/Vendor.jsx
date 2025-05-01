@@ -25,7 +25,7 @@ const Vendor = () => {
     onSubmit: async (values, { setSubmitting }) => {
       setBackendError(null);
       try {
-        const response = await axios.post('http://localhost:3000/seller/signin', values);
+        const response = await axios.post('https://foodserver-0mx8.onrender.com/seller/signin', values);
         
         if (response.status === 200) {
           localStorage.setItem('token', response.data.token);

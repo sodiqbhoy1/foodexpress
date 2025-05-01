@@ -14,7 +14,7 @@ const ForgotPassword = ({ userType }) => {
     setMessage('');
 
     try {
-      const response = await fetch(`http://localhost:3000/forgotpassword/${userType}`, {
+      const response = await fetch(`https://foodserver-0mx8.onrender.com/${userType}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

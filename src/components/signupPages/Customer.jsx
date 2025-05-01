@@ -32,7 +32,7 @@ const Customer = () => {
     
       try {
         // Send the form data to the server
-        const response = await axios.post("http://localhost:3000/signup/customer", values);
+        const response = await axios.post("https://foodserver-0mx8.onrender.com/signup/customer", values);
     
         // If the server responds with a success status (status 201)
         if (response.status === 201) {
