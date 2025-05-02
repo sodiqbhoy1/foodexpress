@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 
 import Home from "./components/Home";
-import Restaurant from "./components/Restaurant";
 import SellerDashboard from "./components/SellerDashboard";
+import Restaurant from "./components/pages/Restaurant";
+import Contact from "./components/pages/Contact";
 
 import NotFound from "./components/NotFound";
 import UserDashboard from "./components/Userdashboard";
@@ -23,6 +24,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/restaurant" element={<Restaurant />} />
+        <Route path="/contact" element={<Contact />} />
 
         {/* signup pages */}
         <Route path="/signup/customer" element={<Customer />} />
