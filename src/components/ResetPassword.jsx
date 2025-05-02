@@ -1,13 +1,14 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import Navbar from './Navbar';
 import { LockClosedIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
 
-const ResetPassword = () => {
-  const { userType, token } = useParams();
+const ResetPassword = ({ userType }) => { // Accept userType as a prop
+  const {  token } = useParams();
   const navigate = useNavigate();
 
-  const [password, setPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
@@ -15,28 +16,32 @@ const ResetPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
+    if (newPassword !== confirmPassword) {
       return setMessage("Passwords do not match");
     }
 
     setLoading(true);
 
     try {
-      const res = await fetch(`https://foodserver-0mx8.onrender.com/reset-password`, {
+      const res = await fetch(`https://foodserver-0mx8.onrender.com/reset-password/${userType}/${token}`, {
+      
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ token, userType, password })
+        body: JSON.stringify({ token, userType, newPassword })
       });
 
       const data = await res.json();
+      console.log("Response data:", data);
 
       if (res.ok) {
         setMessage("Password reset successfully! Redirecting...");
         setTimeout(() => navigate(`/login/${userType}`), 2000);
       } else {
         setMessage(data.message || "Reset failed");
+        console.log(data.message);
+        
       }
     } catch (err) {
       setMessage("Something went wrong");
@@ -77,8 +82,8 @@ const ResetPassword = () => {
                     type="password"
                     required
                     placeholder="Enter new password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
                     className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 focus:border-red-500 sm:text-sm"
                   />
                 </div>
@@ -131,21 +136,14 @@ const ResetPassword = () => {
             </form>
           </div>
 
-          <div className="mt-8 text-center text-sm">
-            <p className="text-gray-600">
-              Remembered your password?{' '}
-              <a 
-                href={`/login/${userType}`} 
-                className="font-medium text-red-600 hover:text-red-500"
-              >
-                Sign in here
-              </a>
-            </p>
-          </div>
+         
         </div>
       </div>
     </>
   );
+};
+ResetPassword.propTypes = {
+  userType: PropTypes.string.isRequired,
 };
 
 export default ResetPassword;

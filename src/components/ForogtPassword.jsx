@@ -15,7 +15,8 @@ const ForgotPassword = ({ userType }) => {
     setMessage('');
 
     try {
-      const response = await fetch(`https://foodserver-0mx8.onrender.com/${userType}`, {
+      const response = await fetch(`https://foodserver-0mx8.onrender.com/forgotpassword/${userType}`, {
+      
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
