@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
+import { ArrowPathIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 
 const ForgotPassword = ({ userType }) => {
   const [email, setEmail] = useState('');
@@ -9,7 +10,7 @@ const ForgotPassword = ({ userType }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
     setIsLoading(true);
     setMessage('');
 
@@ -25,11 +26,9 @@ const ForgotPassword = ({ userType }) => {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage('Reset link sent to your email! Check your inbox.');
+        setMessage('Password reset link sent to your email! Check your inbox.');
       } else {
         setMessage(data.message || 'Error sending reset link.');
-        console.log(data);
-        
       }
     } catch (error) {
       setMessage('An error occurred. Please try again.');
@@ -49,64 +48,91 @@ const ForgotPassword = ({ userType }) => {
 
   return (
     <>
-    <Navbar/>
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          {getTitle()}
-        </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
-          Enter your email to reset your password
-        </p>
-      </div>
-
-      <div className="flex items-center justify-center pt-20">
-        <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
-          <h2 className="text-3xl font-bold text-white text-center mb-4">FITZONE</h2>
-          <h1 className="text-2xl font-semibold text-white text-center mb-6">Forgot Password</h1>
-
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-300">Email Address</label>
-              <input
-                type="email"
-                placeholder="Enter your registered email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="mt-1 block w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                required
-              />
-            </div>
-
-            {message && (
-              <p
-                className={`text-sm text-center ${
-                  message.includes('sent') ? 'text-green-500' : 'text-red-500'
-                }`}
-              >
-                {message}
-              </p>
-            )}
-
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full py-2 px-4 bg-[#EC7807] text-white font-semibold rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50"
-            >
-              {isLoading ? 'Sending...' : 'Send Reset Link'}
-            </button>
-
-            <p className="text-sm text-gray-400 text-center">
-              Remember your password?{' '}
-              <Link to="/login" className="text-blue-500 hover:text-blue-400">
-                Sign In
-              </Link>
+      <Navbar />
+      <div className="min-h-screen bg-gray-50 pt-16"> {/* Added padding for navbar */}
+        <div className="max-w-md mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-red-600">
+              Food<span className="text-orange-500">Express</span>
+            </h1>
+            <h2 className="mt-4 text-2xl font-bold text-gray-900">
+              {getTitle()}
+            </h2>
+            <p className="mt-2 text-sm text-gray-600">
+              Enter your email to reset your password
             </p>
-          </form>
+          </div>
+
+          <div className="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                  Email address
+                </label>
+                <div className="mt-1 relative rounded-md shadow-sm">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <EnvelopeIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                  </div>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    required
+                    placeholder="your.email@example.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                  />
+                </div>
+              </div>
+
+              {message && (
+                <div className={`p-3 rounded-md text-sm ${
+                  message.includes('sent') 
+                    ? 'bg-green-50 text-green-700' 
+                    : 'bg-red-50 text-red-700'
+                }`}>
+                  {message}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50"
+              >
+                {isLoading ? (
+                  <>
+                    <ArrowPathIcon className="animate-spin h-5 w-5 mr-2" />
+                    Sending...
+                  </>
+                ) : (
+                  'Send Reset Link'
+                )}
+              </button>
+
+              <div className="text-center text-sm">
+                <Link 
+                  to="/login" 
+                  className="font-medium text-red-600 hover:text-red-500"
+                >
+                  Remember your password? Sign in
+                </Link>
+              </div>
+            </form>
+          </div>
+
+          <div className="mt-8 text-center">
+            <img 
+              src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+              alt="Food delivery" 
+              className="mx-auto h-40 w-40 rounded-full object-cover"
+            />
+          </div>
         </div>
       </div>
-    </div>
-</>
+    </>
   );
 };
 
