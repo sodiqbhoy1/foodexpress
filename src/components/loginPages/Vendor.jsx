@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import Navbar from '../Navbar';
+import Navbar from '../common/Navbar';
 
 const Vendor = () => {
   const navigate = useNavigate();

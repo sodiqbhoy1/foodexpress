@@ -5,6 +5,7 @@ import axios from 'axios';
 import 'flowbite'; // Import Flowbite for Toast Notifications
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'; // Import Link for routing
+import Navbar from '../common/Navbar';
 
 
 const Vendor = () => {
@@ -63,6 +64,9 @@ const Vendor = () => {
   });
 
   return (
+    <>
+    <Navbar/>
+    <br />
     <div className="bg-gray-100 py-10 px-6 md:px-12 lg:px-24 max-w-4xl mx-auto shadow-lg rounded-md mt-10">
       <div className="mt-6">
         <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">Become a Seller</h2>
@@ -293,6 +297,7 @@ const Vendor = () => {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

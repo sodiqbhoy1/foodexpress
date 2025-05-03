@@ -1,22 +1,20 @@
 import { Route, Routes } from "react-router-dom";
 
 import Home from "./components/Home";
-import SellerDashboard from "./components/SellerDashboard";
-import Restaurant from "./components/pages/Restaurant";
-import Contact from "./components/pages/Contact";
-
+import Restaurant from "./components/common/Restaurant";
+import Contact from "./components/common/Contact";
 import NotFound from "./components/NotFound";
-import UserDashboard from "./components/Userdashboard";
-import Privateroute from "./components/Privateroute";
-import ForgotPassword from "./components/ForogtPassword";
+import ForgotPassword from "./components/forms/ForogtPassword";
 import Customer from "./components/signupPages/Customer";
 import Vendor from "./components/signupPages/Vendor";
 import Courier from "./components/signupPages/Courier";
 import CustomerLogin from "./components/loginPages/Customer";
 import VendorLogin from "./components/loginPages/Vendor";
 import CourierLogin from "./components/loginPages/Courier";
-import ResetPassword from "./components/ResetPassword";
+import ResetPassword from "./components/forms/ResetPassword";
+import CustomerDashboard from "./components/Layouts/customer/CustomerDashboard";
 import CourierDashboard from "./components/Layouts/courier/CourierDashboard";
+import VendorDashboard from "./components/Layouts/vendor/VendorDashboard";
 
 const App = () => {
   return (
@@ -68,17 +66,8 @@ const App = () => {
         <Route path="/dashboard/courier" element={<CourierDashboard />} />
         {/* protect sellerdashboard route with privateroute */}
 
-        <Route
-          path="/sellerdashboard"
-          element={
-            <Privateroute>
-              {" "}
-              <SellerDashboard />{" "}
-            </Privateroute>
-          }
-        />
-
-        <Route path="/userdashboard" element={<UserDashboard />} />
+        <Route path="dashboard/customer" element={<CustomerDashboard />} />
+        <Route path="dashboard/vendor/*" element={<VendorDashboard />} />
         {/* Use element for 404 page */}
         <Route path="*" element={<NotFound />} />
       </Routes>

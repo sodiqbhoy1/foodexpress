@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from './Navbar';
+import Navbar from '../common/Navbar';
 import { ArrowPathIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 
 const ForgotPassword = ({ userType }) => {

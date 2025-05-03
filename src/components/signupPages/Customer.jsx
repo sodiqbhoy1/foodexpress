@@ -2,6 +2,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar from '../common/Navbar';
 
 
 const Customer = () => {
@@ -49,7 +50,10 @@ const Customer = () => {
   });
 
   return (
-    <div className="bg-gray-100 py-10 px-6 md:px-12 lg:px-24 max-w-3xl mx-auto shadow-lg rounded-md mt-10">
+    <>
+    <Navbar/>
+    <br />
+    <div className="bg-gray-100 py-10 px-6 md:px-12 lg:px-24 max-w-3xl mx-auto shadow-lg rounded-md mt-10 ">
       <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">
         Sign Up as a Customer
       </h2>
@@ -189,6 +193,7 @@ const Customer = () => {
         </p>
       </form>
     </div>
+    </>
   );
 }
 

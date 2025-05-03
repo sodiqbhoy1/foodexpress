@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import Navbar from './Navbar';
+import Navbar from '../common/Navbar';
 import { LockClosedIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
 
 const ResetPassword = ({ userType }) => { // Accept userType as a prop

@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Navbar from '../common/Navbar';
 
 
 const Courier = () => {
@@ -59,6 +60,9 @@ const Courier = () => {
 });
 
 return (
+  <>
+  <Navbar/>
+  <br />
   <div className="bg-gray-100 py-10 px-6 md:px-12 lg:px-24 max-w-3xl mx-auto shadow-lg rounded-md mt-10">
     <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">
       Become Our Delivery Partner
@@ -277,7 +281,7 @@ return (
               onChange={formik.handleChange}
               
               className="form-radio text-[#ee2a23] focus:ring-[#ee2a23]"
-            />
+              />
             <span className="ml-2 text-gray-700">Yes</span>
           </label>
           <label className="inline-flex items-center">
@@ -314,6 +318,7 @@ return (
       </p>
     </form>
   </div>
+          </>
 );
 }
 

@@ -1,6 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import Navbar from '../Navbar';
+import Navbar from '../common/Navbar';
 
 const Contact = () => {
   const validationSchema = Yup.object().shape({

@@ -6,8 +6,8 @@ import {
   MapPinIcon,
   TicketIcon,
 } from '@heroicons/react/24/solid';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import Navbar from './common/Navbar';
+import Footer from './common/Footer';
 import Bg from '../assets/bg.jpg';
 
 const Home = () => {

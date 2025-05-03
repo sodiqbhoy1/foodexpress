@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Navbar from '../Navbar';
+import Navbar from './Navbar';
 
 const Restaurant = () => {
   const [restaurants, setRestaurants] = useState([]);
