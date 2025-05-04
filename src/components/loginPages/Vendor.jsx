@@ -30,7 +30,7 @@ const Vendor = () => {
         if (response.status === 200) {
           localStorage.setItem('token', response.data.token);
           localStorage.setItem('seller', JSON.stringify(response.data.seller));
-          navigate('/sellerdashboard');
+          navigate('/dashboard/vendor');
         }
       } catch (error) {
         const errorMessage = error.response?.data?.error || 'An error occurred. Please try again.';

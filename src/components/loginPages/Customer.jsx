@@ -29,7 +29,7 @@ const Customer = () => {
           localStorage.setItem('token', response.data.token);
           localStorage.setItem('user', JSON.stringify(response.data.buyer));
 
-          navigate('/userdashboard');
+          navigate('/dashboard/customer');
         } else {
           console.log('Unsuccessful login:', response.data);
         }
