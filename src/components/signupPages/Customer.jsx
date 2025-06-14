@@ -6,6 +6,8 @@ import Navbar from '../common/Navbar';
 
 
 const Customer = () => {
+   const API_URL = import.meta.env.VITE_API_URL;
+
 
   const navigate = useNavigate();
   // Formik initialization
@@ -33,7 +35,7 @@ const Customer = () => {
     
       try {
         // Send the form data to the server
-        const response = await axios.post("https://foodserver-0mx8.onrender.com/signup/customer", values);
+        const response = await axios.post(`${API_URL}/signup/customer`, values);
     
         // If the server responds with a success status (status 201)
         if (response.status === 201) {

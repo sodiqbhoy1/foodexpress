@@ -19,9 +19,6 @@ import Reports from "./Reports";
 import Customers from "./Customers";
 import Setting from "./Settings";
 
-
-
-
 const vendorMenu = [
   { name: "Overview", icon: <LayoutDashboard />, path: "/dashboard/vendor" },
   { name: "Orders", icon: <ReceiptText />, path: "/dashboard/vendor/orders" },

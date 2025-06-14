@@ -15,6 +15,9 @@ import ResetPassword from "./components/forms/ResetPassword";
 import CustomerDashboard from "./components/Layouts/customer/CustomerDashboard";
 import CourierDashboard from "./components/Layouts/courier/CourierDashboard";
 import VendorDashboard from "./components/Layouts/vendor/VendorDashboard";
+import Profile from "./components/Layouts/customer/Profile";
+import DashboardHome from "./components/Layouts/customer/DashboardHome";
+
 
 const App = () => {
   return (
@@ -63,10 +66,17 @@ const App = () => {
 
 {/* dashboard */}
 
+ {/* CUSTOMER DASHBOARD WITH NESTED ROUTES */}
+  <Route path="/dashboard/customer/*" element={<CustomerDashboard />}>
+    <Route index element={<DashboardHome />} />
+    <Route path="profile" element={<Profile />} />
+    <Route path="reservations" element={<div>Reservations Page</div>} />
+    <Route path="payments" element={<div>Payment Methods Page</div>} />
+  </Route>
+
         <Route path="/dashboard/courier" element={<CourierDashboard />} />
         {/* protect sellerdashboard route with privateroute */}
 
-        <Route path="dashboard/customer" element={<CustomerDashboard />} />
         <Route path="dashboard/vendor/*" element={<VendorDashboard />} />
         {/* Use element for 404 page */}
         <Route path="*" element={<NotFound />} />

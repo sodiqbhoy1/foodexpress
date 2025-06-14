@@ -9,6 +9,8 @@ import Navbar from '../common/Navbar';
 
 
 const Vendor = () => {
+   const API_URL = import.meta.env.VITE_API_URL;
+
   const navigate = useNavigate(); //initialize navigate function
   // Removed unused toastType state
 
@@ -45,7 +47,7 @@ const Vendor = () => {
 
       try {
         // Send the form data to the server
-        const response = await axios.post("https://foodserver-0mx8.onrender.com/signup/vendor", values);
+        const response = await axios.post(`${API_URL}/signup/vendor`, values);
 
         // If the server responds with a success status (status 201)
         if (response.status === 201) {

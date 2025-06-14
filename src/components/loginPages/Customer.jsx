@@ -6,6 +6,8 @@ import Navbar from '../common/Navbar';
 
 
 const Customer = () => {
+   const API_URL = import.meta.env.VITE_API_URL;
+
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -21,13 +23,15 @@ const Customer = () => {
       console.log('Form submitted:', values);
 
       try {
-        const response = await axios.post('https://foodserver-0mx8.onrender.com/signin/customer', values);
+        // const response = await axios.post('https://foodserver-0mx8.onrender.com/signin/customer', values);
+        const response = await axios.post(`${API_URL}/signin/customer`, values);
 
         if (response.status === 200) {
           console.log('Successful login:', response.data);
 
           localStorage.setItem('token', response.data.token);
-          localStorage.setItem('user', JSON.stringify(response.data.buyer));
+
+          // localStorage.setItem('user', JSON.stringify(response.data.buyer));
 
           navigate('/dashboard/customer');
         } else {

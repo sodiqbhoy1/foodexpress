@@ -6,6 +6,8 @@ import { useState } from 'react';
 import Navbar from '../common/Navbar';
 
 const Vendor = () => {
+   const API_URL = import.meta.env.VITE_API_URL;
+
   const navigate = useNavigate();
   const [backendError, setBackendError] = useState(null);
 
@@ -25,7 +27,7 @@ const Vendor = () => {
     onSubmit: async (values, { setSubmitting }) => {
       setBackendError(null);
       try {
-        const response = await axios.post('https://foodserver-0mx8.onrender.com/seller/signin', values);
+        const response = await axios.post(`${API_URL}/signin/vendor`, values);
         
         if (response.status === 200) {
           localStorage.setItem('token', response.data.token);

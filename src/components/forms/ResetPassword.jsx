@@ -12,6 +12,8 @@ const ResetPassword = ({ userType }) => { // Accept userType as a prop
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
+   const API_URL = import.meta.env.VITE_API_URL;
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +25,7 @@ const ResetPassword = ({ userType }) => { // Accept userType as a prop
     setLoading(true);
 
     try {
-      const res = await fetch(`https://foodserver-0mx8.onrender.com/reset-password/${userType}/${token}`, {
+      const res = await fetch(`${API_URL}/reset-password/${userType}/${token}`, {
       
         method: 'POST',
         headers: {

@@ -8,9 +8,11 @@ const Restaurant = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+   const API_URL = import.meta.env.VITE_API_URL;
     const fetchRestaurants = async () => {
       try {
-        const response = await axios.get('https://foodserver-0mx8.onrender.com/vendors');
+        // const response = await axios.get('https://foodserver-0mx8.onrender.com/vendors');
+        const response = await axios.get( `${API_URL}/vendors`);
         setRestaurants(response.data);
       } catch (err) {
         setError('Failed to fetch restaurants. Please try again later.');

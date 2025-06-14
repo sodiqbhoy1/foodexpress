@@ -7,6 +7,8 @@ import Navbar from '../common/Navbar';
 
 
 const Courier = () => {
+   const API_URL = import.meta.env.VITE_API_URL;
+
  // Initialize navigate
  const navigate = useNavigate();
 
@@ -41,7 +43,7 @@ const Courier = () => {
 
     console.log(values);
 
-    axios.post("https://foodserver-0mx8.onrender.com/signup/courier", values)
+    axios.post(`${API_URL}/signup/courier`, values)
       .then((response) => {
         if (response.status === 201) {
           console.log(response.data);

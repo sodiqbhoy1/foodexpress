@@ -8,6 +8,8 @@ const ForgotPassword = ({ userType }) => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+   const API_URL = import.meta.env.VITE_API_URL;
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,7 +17,7 @@ const ForgotPassword = ({ userType }) => {
     setMessage('');
 
     try {
-      const response = await fetch(`https://foodserver-0mx8.onrender.com/forgotpassword/${userType}`, {
+      const response = await fetch(`${API_URL}/forgotpassword/${userType}`, {
       
         method: 'POST',
         headers: {

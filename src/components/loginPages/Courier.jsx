@@ -5,6 +5,8 @@ import Navbar from '../common/Navbar';
 import axios from 'axios';
 
 const Courier = () => {
+   const API_URL = import.meta.env.VITE_API_URL;
+
   const navigate = useNavigate()
     const initialValues = {
         email: '',
@@ -25,7 +27,7 @@ const Courier = () => {
         // Add your login API call here
 
         try {
-          const response = await axios.post('https://foodserver-0mx8.onrender.com/signin/courier', values);
+          const response = await axios.post(`${API_URL}/signin/courier`, values);
   
           if (response.status === 200) {
             console.log('Successful login:', response.data);
